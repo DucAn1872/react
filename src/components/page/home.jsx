@@ -4,7 +4,6 @@ import Header from "../home/Header";
 import Search from "../home/Search";
 import TableData from "../home/TableData";
 import AddUser from "../home/AddUser";
-import DataUser from "../home/Data.json";
 
 const uniqueId = () => parseInt(Date.now() * Math.random()).toString();
 
@@ -21,15 +20,10 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // kiem tra
-    if (localStorage.getItem("userData") === null) {
-      localStorage.setItem("userData", JSON.stringify(DataUser));
-    } else {
-      var temp = JSON.parse(localStorage.getItem("userData"));
-      this.setState({
-        data: temp,
-      });
-    }
+    var temp = JSON.parse(localStorage.getItem("userData"));
+    this.setState({
+      data: temp,
+    });
   }
 
   deleteUser = (idUser) => {

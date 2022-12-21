@@ -35,10 +35,10 @@ class TableData extends Component {
                     <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Tên </th>
-                        <th>Điện thoại </th>
-                        <th>Quyền </th>
-                        <th>Thao tác </th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>

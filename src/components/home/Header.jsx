@@ -8,7 +8,7 @@ class Header extends Component {
                 <div className="container text-center">
                     <h1 className="display-3 font-bold">Todo List
                     </h1>
-                    <p className="lead"> với dữ liệu json</p>
+                    <p className="lead">with data json</p>
                     <hr className="my-2" />
                 </div>
                 </div>

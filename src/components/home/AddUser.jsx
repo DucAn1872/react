@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../../tailwind.css";
 
 class AddUser extends Component {
   constructor(props) {
@@ -26,25 +27,20 @@ class AddUser extends Component {
       return (
         <div className="col">
           <form method="post">
-            <div className="card border-primary mb-3 mt-2">
-              <div className="card-header">Thêm mới user vào hệ thống </div>
-              <div className="card-body text-primary">
-                <div className="form-group">
-                  <input type="text" onChange={(event) => this.isChange(event)} name="name" className="form-control" placeholder="Tên User" />
+            <div className="card border-primary mb-3 mt-2 fixed top-28 right-1">
+              <div className="card-header bg-gray-700 text-white">New Data</div>
+              <div className="card-body text-primary py-0">
+                <div className="form-group my-2 w-96">
+                  <input type="text" onChange={(event) => this.isChange(event)} name="name" className="form-control" placeholder="Enter title..." />
                 </div>
-                <div className="form-group">
-                  <input type="text" onChange={(event) => this.isChange(event)} name="tel" className="form-control" placeholder="Điện thoại " />
+                <div className="form-group mb-2 w-96">
+                  <input type="text" onChange={(event) => this.isChange(event)} name="tel" className="form-control" placeholder="Enter description..." />
                 </div>
-                <div className="form-group">
-                  <select className="custom-select" name="Permission" onChange={(event) => this.isChange(event)} required>
-                    <option value>Chọn Quyền mặc định </option>
-                    <option value={1}>Admin</option>
-                    <option value={2}>Modrator</option>
-                    <option value={3}>Normal</option>
-                  </select>
+                <div className="form-group mb-2 w-96">
+                  <input type="date" onChange={(event) => this.isChange(event)} name="Permission" className="form-control" />
                 </div>
-                <div className="form-group">
-                  <input type="reset" className="btn btn-block btn-outline-info" onClick={(name, tel, Permission) => this.props.add(this.state.name, this.state.tel, this.state.Permission)} value=" Thêm mới " />
+                <div className="form-group mb-2 w-96">
+                  <input type="reset" className="btn btn-success bg-green-500" onClick={(name, tel, Permission) => this.props.add(this.state.name, this.state.tel, this.state.Permission)} value="Add" />
                 </div>
               </div>
             </div>
