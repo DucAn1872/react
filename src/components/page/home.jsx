@@ -14,8 +14,8 @@ class App extends Component {
       hienThiForm: false,
       searchText: "",
       data: [],
-      editUserStatus: false,
-      userEditObject: {},
+      editItemStatus: false,
+      itemEditObject: {},
     };
   }
 
@@ -31,15 +31,15 @@ class App extends Component {
     }
   }
 
-  deleteUser = (idUser) => {
-    var tempData = this.state.data.filter((item) => item.id !== idUser);
+  deleteItem = (idItem) => {
+    var tempData = this.state.data.filter((item) => item.id !== idItem);
     this.setState({
       data: tempData,
     });
     // day vao du lieu
     localStorage.setItem("database", JSON.stringify(tempData));
   };
-  getUserEditInfoApp = (info) => {
+  getItemEditInfoApp = (info) => {
     this.state.data.forEach((value, key) => {
       if (value.id === info.id) {
         value.title = info.title;
@@ -49,14 +49,14 @@ class App extends Component {
     });
     localStorage.setItem("database", JSON.stringify(this.state.data));
   };
-  editUser = (user) => {
+  editItem = (item) => {
     this.setState({
-      userEditObject: user,
+      itemEditObject: item,
     });
   };
-  changeEditUserStatus = () => {
+  changeEditItemStatus = () => {
     this.setState({
-      editUserStatus: !this.state.editUserStatus,
+      editItemStatus: !this.state.editItemStatus,
     });
   };
   getNewUserData = (title, description, date) => {
@@ -102,19 +102,19 @@ class App extends Component {
           <div className="container">
             <div className="row">
               <Search
-                getUserEditInfoApp={(info) => this.getUserEditInfoApp(info)}
-                userEditObject={this.state.userEditObject}
+                getItemEditInfoApp={(info) => this.getItemEditInfoApp(info)}
+                itemEditObject={this.state.itemEditObject}
                 checkConnectProps={(dl) => this.getTextSearch(dl)}
                 ketNoi={() => this.doiTrangThai()}
                 hienThiForm={this.state.hienThiForm}
-                editUserStatus={this.state.editUserStatus}
-                changeEditUserStatus={() => this.changeEditUserStatus()}
+                editItemStatus={this.state.editItemStatus}
+                changeEditItemStatus={() => this.changeEditItemStatus()}
               />
               <TableData
-                deleteUser={(idUser) => this.deleteUser(idUser)}
-                changeEditUserStatus={() => this.changeEditUserStatus()}
-                editFun={(user) => this.editUser(user)}
-                dataUserProps={ketqua}
+                deleteItem={(idItem) => this.deleteItem(idItem)}
+                changeEditItemStatus={() => this.changeEditItemStatus()}
+                editFun={(item) => this.editItem(item)}
+                dataItemProps={ketqua}
               />
               <AddUser
                 add={(title, description, date) =>

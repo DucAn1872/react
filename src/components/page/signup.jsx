@@ -40,6 +40,15 @@ export default class SignUp extends Component {
               />
             </div>
 
+            <div className="w-80 mb-2 mr-3">
+              <label className='float-left'>Re-enter Password</label>
+              <input
+                type="password"
+                className="form-control ml-2 inline-block required:border-red-600"
+                placeholder="Confirm password"
+              />
+            </div>
+
             <div className="d-grid">
               <button type="submit" className="btn btn-primary bg-blue-600">
                 Sign Up

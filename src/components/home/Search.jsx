@@ -9,21 +9,21 @@ class Search extends Component {
             userObj:{}
         }
     }
-    //props.getUserEditInfoApp
+    //props.getItemEditInfoApp
     
     getUserEditInfo = (info) => {
         this.setState({
             userObj : info 
         });
-        this.props.getUserEditInfoApp(info) ; 
+        this.props.getItemEditInfoApp(info) ; 
     
     }
     isShowEditForm = () => {
-        if(this.props.editUserStatus === true){
+        if(this.props.editItemStatus === true){
             return <EditUser 
             getUserEditInfo = {(info) => this.getUserEditInfo(info)}
-            userEditObject= {this.props.userEditObject}
-            changeEditUserStatus = {() => this.props.changeEditUserStatus()}
+            itemEditObject= {this.props.itemEditObject}
+            changeEditItemStatus = {() => this.props.changeEditItemStatus()}
              />
         }
         

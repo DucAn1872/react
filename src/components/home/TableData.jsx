@@ -3,17 +3,17 @@ import TableDataRow from './TableDataRow';
 
 class TableData extends Component {
     
-    deleteButtonClick = (idUser) => {
-        //deleteUser
-        this.props.deleteUser(idUser);
+    deleteButtonClick = (idItem) => {
+        //deleteItem
+        this.props.deleteItem(idItem);
     }
-    mappingDataUser = () => this.props.dataUserProps.map((value,key) => (
+    mappingDataItem = () => this.props.dataItemProps.map((value,key) => (
         
         <TableDataRow
-        deleteButtonClick = {(idUser) => this.deleteButtonClick(idUser)}
+        deleteButtonClick = {(idItem) => this.deleteButtonClick(idItem)}
         
-        changeEditUserStatus = {() => this.props.changeEditUserStatus()}
-        editFunClick={(user) => this.props.editFun(value)} 
+        changeEditItemStatus = {() => this.props.changeEditItemStatus()}
+        editFunClick={(item) => this.props.editFun(value)} 
         title={value.title}
          key={key} 
         stt={key} 
@@ -43,7 +43,7 @@ class TableData extends Component {
                     </thead>
                     <tbody>
 
-                        {this.mappingDataUser()}
+                        {this.mappingDataItem()}
                    
                     </tbody>
                 </table>
