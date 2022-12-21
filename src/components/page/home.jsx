@@ -4,6 +4,7 @@ import Header from "../home/Header";
 import Search from "../home/Search";
 import TableData from "../home/TableData";
 import AddUser from "../home/AddUser";
+import Data from "../home/Data.json";
 
 const uniqueId = () => parseInt(Date.now() * Math.random()).toString();
 
@@ -22,7 +23,7 @@ class App extends Component {
   componentWillMount() {
     // kiem tra
     if (localStorage.getItem("database") === null) {
-      localStorage.setItem("database",JSON.stringify([{id: "1", title: "IP14", description: "512GB", date: "2022-12-22"}]));
+      localStorage.setItem("database", JSON.stringify(Data));
     } else {
       var temp = JSON.parse(localStorage.getItem("database"));
       this.setState({
