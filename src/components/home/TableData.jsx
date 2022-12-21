@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import TableDataRow from './TableDataRow';
 
 class TableData extends Component {
+    
     deleteButtonClick = (idUser) => {
         //deleteUser
         this.props.deleteUser(idUser);
     }
     mappingDataUser = () => this.props.dataUserProps.map((value,key) => (
+        
         <TableDataRow
         deleteButtonClick = {(idUser) => this.deleteButtonClick(idUser)}
+        
         changeEditUserStatus = {() => this.props.changeEditUserStatus()}
         editFunClick={(user) => this.props.editFun(value)} 
         userName={value.name}
@@ -19,8 +22,13 @@ class TableData extends Component {
         id={value.id}
         />
     ))
+    
     // this.props.editFun
+
     render() {
+
+       
+
         return (
             <div className="col">
                 <table className="table table-striped table-hover   ">
@@ -34,10 +42,13 @@ class TableData extends Component {
                     </tr>
                     </thead>
                     <tbody>
+
                         {this.mappingDataUser()}
+                   
                     </tbody>
                 </table>
-            </div>
+                </div>
+
         );
     }
 }

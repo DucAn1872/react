@@ -4,11 +4,11 @@ import Header from "../home/Header";
 import Search from "../home/Search";
 import TableData from "../home/TableData";
 import AddUser from "../home/AddUser";
+import DataUser from "../home/Data.json";
 
-// const uuidv1 = require("../../../node_modules/uuid/dist/v1");
-const uuidv1 = 1;
+const uniqueId = () => parseInt(Date.now() * Math.random()).toString();
 
-class Home extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,10 +21,15 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    var temp = JSON.parse(localStorage.getItem("userData"));
-    this.setState({
-    data: temp,
-    });
+    // kiem tra
+    if (localStorage.getItem("userData") === null) {
+      localStorage.setItem("userData", JSON.stringify(DataUser));
+    } else {
+      var temp = JSON.parse(localStorage.getItem("userData"));
+      this.setState({
+        data: temp,
+      });
+    }
   }
 
   deleteUser = (idUser) => {
@@ -57,7 +62,7 @@ class Home extends Component {
   };
   getNewUserData = (name, tel, Permission) => {
     var item = {};
-    item.id = uuidv1;
+    item.id = uniqueId();
     item.name = name;
     item.tel = tel;
     item.Permission = Permission;
@@ -114,7 +119,7 @@ class Home extends Component {
               />
               <AddUser
                 add={(name, tel, Permission) =>
-                  {this.getNewUserData(name, tel, Permission)}
+                  this.getNewUserData(name, tel, Permission)
                 }
                 hienThiForm={this.state.hienThiForm}
               />
@@ -126,4 +131,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default App;

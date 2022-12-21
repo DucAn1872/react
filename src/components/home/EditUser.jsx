@@ -55,7 +55,7 @@ class EditUser extends Component {
                                 <div className="form-group">
                                     <input type="button"
                                         className="btn btn-block btn-danger"
-                                        value="Lưu" onClick={() => this.saveButton()} />
+                                        value=" Lưu  " onClick={() => this.saveButton()} />
                                 </div>
                             </div>
                         </div>
