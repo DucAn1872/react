@@ -22,7 +22,7 @@ class App extends Component {
   componentWillMount() {
     // kiem tra
     if (localStorage.getItem("database") === null) {
-      localStorage.setItem("database",[]);
+      localStorage.setItem("database",[{id: "80651159705", title: "IP14", description: "512GB", date: "2022-12-22"}]);
     } else {
       var temp = JSON.parse(localStorage.getItem("database"));
       this.setState({
