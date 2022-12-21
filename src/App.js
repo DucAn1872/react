@@ -1,48 +1,40 @@
 import React from "react";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-import Login from "./components/login.component";
-import SignUp from "./components/signup.component";
+import Home from "./components/page/home";
+import Login from "./components/page/login";
+import SignUp from "./components/page/signup";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-dark">
-          <div className="container">
-            <Link
-              className="navbar-brand text-danger font-weight-bold"
-              to={"/sign-in"}
-            >
-              Slowdown2k
+        <nav className="navbar navbar-light bg-light justify-content-between px-5 bg-dark">
+          <Link
+            className="navbar-brand font-weight-bold text-danger"
+            to={"/home"}
+          >
+            Slowdown2k
+          </Link>
+          <div className="d-flex font-weight-bold">
+            <Link className="nav-link m-1 text-white" to={"/sign-in"}>
+              Login
             </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link bg-red-500" to={"/sign-in"}>
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to={"/sign-up"}>
-                    Sign up
-                  </Link>
-                </li>
-              </ul>
-            </div>
+
+            <Link className="nav-link m-1 text-white" to={"/sign-up"}>
+              Sign up
+            </Link>
           </div>
         </nav>
 
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Routes>
-              <Route exact path="/" element={<Login />} />
-              <Route path="/sign-in" element={<Login />} />
-              <Route path="/sign-up" element={<SignUp />} />
-            </Routes>
-          </div>
+        <div style={{ paddingTop: "100px" }}>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/sign-in" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+          </Routes>
         </div>
       </div>
     </Router>
