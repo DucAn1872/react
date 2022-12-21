@@ -14,9 +14,9 @@ class TableDataRow extends Component {
     return (
       <tr>
         <td>{this.props.stt + 1}</td>
-        <td>{this.props.userName}</td>
-        <td>{this.props.tel}</td>
-        <td>{this.props.permission}</td>
+        <td>{this.props.title}</td>
+        <td>{this.props.description}</td>
+        <td>{this.props.date}</td>
         <td>
           <div className="btn-group">
             <div

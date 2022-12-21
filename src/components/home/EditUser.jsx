@@ -6,9 +6,9 @@ class EditUser extends Component {
         super(props);
         this.state = {
             id: this.props.userEditObject.id,
-            name: this.props.userEditObject.name,
-            tel: this.props.userEditObject.tel,
-            Permission: this.props.userEditObject.Permission
+            title: this.props.userEditObject.title,
+            description: this.props.userEditObject.description,
+            date: this.props.userEditObject.date
         }
     }
     //getUserEditInfo
@@ -22,10 +22,9 @@ class EditUser extends Component {
     saveButton = () => {
         var info = {};
         info.id = this.state.id;
-        info.name = this.state.name;
-        info.tel = this.state.tel;
-        info.Permission = this.state.Permission;
-        //  console.log("info la " + info.name);
+        info.title = this.state.title;
+        info.description = this.state.description;
+        info.date = this.state.date;
         this.props.getUserEditInfo(info);
         this.props.changeEditUserStatus(); // an form 
     }
@@ -38,13 +37,13 @@ class EditUser extends Component {
                         <div className="card-header text-center text-white bg-gray-700">Edit Data</div>
                         <div className="card-body text-primary py-0">
                             <div className="form-group my-2 w-96">
-                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.name} type="text" name="name" className="form-control" placeholder="Enter title..." />
+                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.title} type="text" name="title" className="form-control" placeholder="Enter title..." />
                             </div>
                             <div className="form-group mb-2 w-96">
-                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.tel} type="text" name="tel" className="form-control" placeholder="Enter description..." />
+                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.description} type="text" name="description" className="form-control" placeholder="Enter description..." />
                             </div>
                             <div className="form-group mb-2 w-96">
-                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.Permission} type="date" name="Permission" className="form-control" />
+                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.date} type="date" name="date" className="form-control" />
                             </div>
                             <div className="form-group mb-2 w-96">
                                 <input type="button"

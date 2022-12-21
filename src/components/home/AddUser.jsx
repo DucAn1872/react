@@ -6,9 +6,9 @@ class AddUser extends Component {
     super(props);
     this.state = {
       id: "",
-      name: "",
-      tel: "",
-      Permission: ""
+      title: "",
+      description: "",
+      date: ""
     }
   }
 
@@ -31,16 +31,16 @@ class AddUser extends Component {
               <div className="card-header bg-gray-700 text-white">New Data</div>
               <div className="card-body text-primary py-0">
                 <div className="form-group my-2 w-96">
-                  <input type="text" onChange={(event) => this.isChange(event)} name="name" className="form-control" placeholder="Enter title..." />
+                  <input type="text" onChange={(event) => this.isChange(event)} name="title" className="form-control" placeholder="Enter title..." />
                 </div>
                 <div className="form-group mb-2 w-96">
-                  <input type="text" onChange={(event) => this.isChange(event)} name="tel" className="form-control" placeholder="Enter description..." />
+                  <input type="text" onChange={(event) => this.isChange(event)} name="description" className="form-control" placeholder="Enter description..." />
                 </div>
                 <div className="form-group mb-2 w-96">
-                  <input type="date" onChange={(event) => this.isChange(event)} name="Permission" className="form-control" />
+                  <input type="date" onChange={(event) => this.isChange(event)} name="date" className="form-control" />
                 </div>
                 <div className="form-group mb-2 w-96">
-                  <input type="reset" className="btn btn-success bg-green-500" onClick={(name, tel, Permission) => this.props.add(this.state.name, this.state.tel, this.state.Permission)} value="Add" />
+                  <input type="reset" className="btn btn-success bg-green-500" onClick={(title, description, date) => this.props.add(this.state.title, this.state.description, this.state.date)} value="Add" />
                 </div>
               </div>
             </div>

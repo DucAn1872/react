@@ -20,10 +20,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-    var temp = JSON.parse(localStorage.getItem("userData"));
-    this.setState({
-      data: temp,
-    });
+    // kiem tra
+    if (localStorage.getItem("database") === null) {
+      localStorage.setItem("database",[]);
+    } else {
+      var temp = JSON.parse(localStorage.getItem("database"));
+      this.setState({
+        data: temp,
+      });
+    }
   }
 
   deleteUser = (idUser) => {
@@ -32,17 +37,17 @@ class App extends Component {
       data: tempData,
     });
     // day vao du lieu
-    localStorage.setItem("userData", JSON.stringify(tempData));
+    localStorage.setItem("database", JSON.stringify(tempData));
   };
   getUserEditInfoApp = (info) => {
     this.state.data.forEach((value, key) => {
       if (value.id === info.id) {
-        value.name = info.name;
-        value.tel = info.tel;
-        value.Permission = info.Permission;
+        value.title = info.title;
+        value.description = info.description;
+        value.date = info.date;
       }
     });
-    localStorage.setItem("userData", JSON.stringify(this.state.data));
+    localStorage.setItem("database", JSON.stringify(this.state.data));
   };
   editUser = (user) => {
     this.setState({
@@ -54,19 +59,19 @@ class App extends Component {
       editUserStatus: !this.state.editUserStatus,
     });
   };
-  getNewUserData = (name, tel, Permission) => {
+  getNewUserData = (title, description, date) => {
     var item = {};
     item.id = uniqueId();
-    item.name = name;
-    item.tel = tel;
-    item.Permission = Permission;
+    item.title = title;
+    item.description = description;
+    item.date = date;
     var items = this.state.data;
     items.push(item);
 
     this.setState({
       data: items,
     });
-    localStorage.setItem("userData", JSON.stringify(items));
+    localStorage.setItem("database", JSON.stringify(items));
   };
 
   getTextSearch = (dl) => {
@@ -84,7 +89,7 @@ class App extends Component {
   render() {
     var ketqua = [];
     this.state.data.forEach((item) => {
-      if (item.name.indexOf(this.state.searchText) !== -1) {
+      if (item.title.indexOf(this.state.searchText) !== -1) {
         ketqua.push(item);
       }
     });
@@ -112,8 +117,8 @@ class App extends Component {
                 dataUserProps={ketqua}
               />
               <AddUser
-                add={(name, tel, Permission) =>
-                  this.getNewUserData(name, tel, Permission)
+                add={(title, description, date) =>
+                  this.getNewUserData(title, description, date)
                 }
                 hienThiForm={this.state.hienThiForm}
               />

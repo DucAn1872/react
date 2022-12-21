@@ -14,11 +14,11 @@ class TableData extends Component {
         
         changeEditUserStatus = {() => this.props.changeEditUserStatus()}
         editFunClick={(user) => this.props.editFun(value)} 
-        userName={value.name}
+        title={value.title}
          key={key} 
         stt={key} 
-        tel={value.tel}
-        permission={value.Permission}
+        description={value.description}
+        date={value.date}
         id={value.id}
         />
     ))
