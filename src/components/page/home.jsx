@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "../../App.css";
-import Header from "../home/Header";
 import Search from "../home/Search";
 import TableData from "../home/TableData";
 import AddUser from "../home/AddUser";
 import Data from "../home/Data.json";
+import "../../tailwind.css";
 
 const uniqueId = () => parseInt(Date.now() * Math.random()).toString();
 
@@ -19,6 +19,7 @@ class App extends Component {
       itemEditObject: {},
     };
   }
+
 
   componentWillMount() {
     // kiem tra
@@ -98,10 +99,16 @@ class App extends Component {
     
     return (
       <div>
-        <Header />
+        <div className="w-4/5 m-auto">
+                <div className="m-auto">
+                    <h1 className="font-bold text-4xl mt-10 text-white">Todo List</h1>
+                    <p className="text-xl">with data json</p>
+                    <hr className="my-2" />
+                </div>
+            </div>
         <div className="searchForm">
-          <div className="container">
-            <div className="row">
+          <div className="m-auto">
+            <div className="">
               <Search
                 getItemEditInfoApp={(info) => this.getItemEditInfoApp(info)}
                 itemEditObject={this.state.itemEditObject}

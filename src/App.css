@@ -1,5 +1,9 @@
+#root {
+  background-image: linear-gradient(to bottom right, #6366f1, #ec4899);
+}
 .App {
   text-align: center;
+  min-height: 800px;
 }
 
 .App-logo {

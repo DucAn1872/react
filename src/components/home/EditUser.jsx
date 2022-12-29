@@ -33,21 +33,21 @@ class EditUser extends Component {
         return (
             <div className="col">
                 <form method="post">
-                    <div className="card border-primary mb-3 mt-2 fixed top-28 right-1 z-10">
-                        <div className="card-header text-center text-white bg-gray-700">Edit Data</div>
+                    <div className="z-50 mb-3 mt-2 fixed top-28 right-1 bg-purple-500 rounded shadow-2xl outline outline-2 outline-white">
+                        <div className="rounded-t p-2 bg-violet-500 text-white text-xl">Edit Data</div>
                         <div className="card-body text-primary py-0">
-                            <div className="form-group my-2 w-96">
-                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.title} type="text" name="title" className="form-control" placeholder="Enter title..." />
+                            <div className="my-2 w-96">
+                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.title} type="text" name="title" className="w-11/12 p-1 my-2 outline-none rounded" placeholder="Enter title..." required/>
                             </div>
-                            <div className="form-group mb-2 w-96">
-                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.description} type="text" name="description" className="form-control" placeholder="Enter description..." />
+                            <div className="mb-2 w-96">
+                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.description} type="text" name="description" className="w-11/12 p-1 mb-2 outline-none rounded" placeholder="Enter description..." required/>
                             </div>
-                            <div className="form-group mb-2 w-96">
-                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.date} type="date" name="date" className="form-control" />
+                            <div className="mb-2 w-96">
+                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.date} type="date" name="date" className="w-11/12 p-1 outline-none rounded" required/>
                             </div>
-                            <div className="form-group mb-2 w-96">
-                                <input type="button"
-                                    className="btn btn-block btn-success bg-green-500"
+                            <div className="mb-2 w-96">
+                                <input type="submit"
+                                    className="w-11/12 m-auto my-2 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                                     value="Save" onClick={() => this.saveButton()} />
                             </div>
                         </div>

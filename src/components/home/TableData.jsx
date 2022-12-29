@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../../tailwind.css";
 import TableDataRow from './TableDataRow';
 
 class TableData extends Component {
@@ -22,23 +23,22 @@ class TableData extends Component {
     
     render() {
         return (
-            <div className="col">
-                <table className="table table-striped table-hover   ">
-                    <thead>
+            <div className="w-4/5 m-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                    <thead className='bg-gray-50'>
                     <tr>
-                        <th>STT</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Date</th>
-                        <th>Action</th>
+                        <th scope="col" className='px-6 py-3 text-lg font-bold text-center text-gray-500 uppercase'>STT</th>
+                        <th scope="col" className='px-6 py-3 text-lg font-bold text-center text-gray-500 uppercase'>Title</th>
+                        <th scope="col" className='px-6 py-3 text-lg font-bold text-center text-gray-500 uppercase'>Description</th>
+                        <th scope="col" className='px-6 py-3 text-lg font-bold text-center text-gray-500 uppercase'>Date</th>
+                        <th scope="col" className='px-6 py-3 text-lg font-bold text-center text-gray-500 uppercase'>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='divide-y divide-gray-200'>
                         {this.mappingDataItem()}
                     </tbody>
                 </table>
-                </div>
-
+            </div>
         );
     }
 }
