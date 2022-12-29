@@ -1,56 +1,71 @@
-import React, { Component } from 'react'
+import React from 'react';
 import "../../tailwind.css";
 
-export default class Login extends Component {
+class Login extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name:'',
+      email:'',
+      phone:'',
+      password:'',
+      error:''
+    }
+  }
+
+  onChangeName = (e) =>{
+    this.setState({name:e.target.value})
+  }
+
+  onChangeEmail = (e) =>{
+    this.setState({email:e.target.value})
+  }
+
+  onChangePhone = (e) =>{
+    this.setState({phone:e.target.value})
+  }
+
+  onSubmit = (e) =>{
+    e.preventDefault()
+    let olddata = localStorage.getItem('formdata')
+    let oldArr = JSON.parse(olddata)
+    oldArr.map(arr => 
+      {
+        if(this.state.name.length > 0 && this.state.password.length > 0){
+          if (arr.name === this.state.name && (arr.password === this.state.password)) {
+            let user = this.state.name;
+            window.location.replace('http://localhost:3000/home');
+          }else{
+            this.setState({error:'Please check your email or password'});
+          }
+        }
+      }
+      )
+  }
+  
+  onChangePassword = (e) =>{
+    this.setState({password:e.target.value})
+  }
+
   render() {
+    
     return (
-      <div className="card shadow-sm card m-auto inline-block p-3">
-        <div className="auth-inner">
-          <form>
-            <h3 className='text-2xl font-bold'>Sign In</h3>
-
-            <div className="w-80 mb-2 mr-3">
-              <label className='float-left'>Email address</label>
-              <input
-                type="email"
-                className="form-control ml-2 inline-block required:border-red-600"
-                placeholder="Enter email"
-              />
-            </div>
-
-            <div className="w-80 mb-2 mr-3">
-              <label className='float-left'>Password</label>
-              <input
-                type="password"
-                className="form-control ml-2 inline-block required:border-red-600"
-                placeholder="Enter password"
-              />
-            </div>
-
-            <div className="w-80 mr-3 inline-block">
-              <div className="float-left">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck1"
-                />
-                <label className=" ml-1" htmlFor="customCheck1">
-                  Remember me
-                </label>
-              </div>
-            </div>
-
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary bg-blue-600">
-                Submit
-              </button>
-            </div>
-            <p className="text-right mt-2 text-gray-400">
-              Forgot <a href="#" className='text-blue-700 hover:text-blue-500'>password?</a>
-            </p>
-          </form>
+      <form onSubmit={this.onSubmit}>
+        <p className="error">
+          {this.state.error}
+        </p>
+        <div className="form-group">
+          <label>Name</label>
+          <input type="text" className="form-control" value={this.state.name} onChange={this.onChangeName} required />
         </div>
-      </div>
+        <div className="form-group">
+          <label>Password</label>
+          <input type="password" className="form-control" value={this.state.password} onChange={this.onChangePassword} required />
+        </div>
+        <button type="submit" className="btn btn-primary btn-block" onClick={this.props.onLogin}>Login</button>
+      </form>
     )
   }
 }
+
+export default Login;

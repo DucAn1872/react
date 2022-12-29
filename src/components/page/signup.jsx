@@ -1,65 +1,76 @@
-import React, { Component } from 'react'
+import React from 'react';
+import "../../tailwind.css";
 
-export default class SignUp extends Component {
+class Register extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name:'',
+      email:'',
+      phone:'',
+      password:''
+    }
+  }
+  
+  onChangeName = (e) =>{
+    this.setState({name:e.target.value})
+  }
+
+  onChangeEmail = (e) =>{
+    this.setState({email:e.target.value})
+  }
+
+  onChangePhone = (e) =>{
+    this.setState({phone:e.target.value})
+  }
+
+  onChangePassword = (e) =>{
+    this.setState({password:e.target.value})
+  }
+
+  onSubmit = (e) =>{
+    let ob = {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      password: this.state.password,
+    }
+    let olddata = localStorage.getItem('formdata');
+    if(olddata===null){
+      olddata = []
+      olddata.push(ob)
+      localStorage.setItem('formdata', JSON.stringify(olddata));
+    }else{
+      let oldArr = JSON.parse(olddata)
+      oldArr.push(ob)
+      localStorage.setItem("formdata", JSON.stringify(oldArr))
+      console.log(oldArr,'hhg')
+    }
+  }
+
   render() {
     return (
-      <div className="card shadow-sm card m-auto inline-block p-3">
-        <div>
-          <form>
-            <h3 className='text-2xl font-bold'>Sign Up</h3>
-
-            <div className="w-80 mb-2 mr-3">
-              <label className='float-left'>First name</label>
-              <input
-                type="text"
-                className="form-control ml-2 inline-block required:border-red-600"
-                placeholder="First name"
-              />
-            </div>
-
-            <div className="w-80 mb-2 mr-3">
-              <label className='float-left'>Last name</label>
-              <input type="text" className="form-control ml-2 inline-block required:border-red-600" placeholder="Last name" />
-            </div>
-
-            <div className="w-80 mb-2 mr-3">
-              <label className='float-left'>Email address</label>
-              <input
-                type="email"
-                className="form-control ml-2 inline-block required:border-red-600"
-                placeholder="Enter email"
-              />
-            </div>
-
-            <div className="w-80 mb-2 mr-3">
-              <label className='float-left'>Password</label>
-              <input
-                type="password"
-                className="form-control ml-2 inline-block required:border-red-600"
-                placeholder="Enter password"
-              />
-            </div>
-
-            <div className="w-80 mb-2 mr-3">
-              <label className='float-left'>Re-enter Password</label>
-              <input
-                type="password"
-                className="form-control ml-2 inline-block required:border-red-600"
-                placeholder="Confirm password"
-              />
-            </div>
-
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary bg-blue-600">
-                Sign Up
-              </button>
-            </div>
-            <p className="text-right mt-2 text-gray-400">
-              Already registered <a href="/sign-in" className='text-blue-700 hover:text-blue-500'>sign in?</a>
-            </p>
-          </form>
+      <form onSubmit={this.onSubmit}>
+        <div className="form-group">
+          <label>Name</label>
+          <input type="text" className="form-control" value={this.state.name} onChange={this.onChangeName} required />
         </div>
-      </div>
+        <div className="form-group">
+          <label>Email</label>
+          <input type="email" className="form-control" value={this.state.email} onChange={this.onChangeEmail} required />
+        </div>
+        <div className="form-group">
+          <label>Phone</label>
+          <input type="tel" className="form-control" value={this.state.phone} onChange={this.onChangePhone} required />
+        </div>
+        <div className="form-group">
+          <label>Password</label>
+          <input type="password" className="form-control" value={this.state.password} onChange={this.onChangePassword} required />
+        </div>
+        <button type="submit" className="btn btn-primary btn-block" onClick={this.props.onRegister}>Register</button>
+      </form>
     )
   }
 }
+
+export default Register;

@@ -95,7 +95,7 @@ class App extends Component {
       }
     });
 
-    //  console.log(ketqua);
+    
     return (
       <div>
         <Header />
