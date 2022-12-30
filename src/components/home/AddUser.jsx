@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "../../tailwind.css";
 
+const uniqueId = () => parseInt(Date.now() * Math.random()).toString();
 class AddUser extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +13,24 @@ class AddUser extends Component {
     }
   }
 
+  onSubmit = (e) =>{
+    let ob = {
+      id: uniqueId(),
+      title: this.state.title,
+      description: this.state.description,
+      date: this.state.date,
+    }
+    let olddata = localStorage.getItem('database');
+    if(olddata===null){
+      olddata = []
+      olddata.push(ob)
+      localStorage.setItem('database', JSON.stringify(olddata));
+    }else{
+      let oldArr = JSON.parse(olddata)
+      oldArr.push(ob)
+      localStorage.setItem("database", JSON.stringify(oldArr))
+    }
+  }
 
   isChange = (event) => {
     const name = event.target.name;
@@ -23,14 +42,10 @@ class AddUser extends Component {
   }
 
   kiemTraTrangThai = () => {
-    const handleSubmit = event => {
-      // 👇️ prevent page refresh
-      event.preventDefault();
-    };
     if (this.props.hienThiForm === true) {
       return (
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={this.onSubmit}>
             <div className="z-50 mb-3 mt-2 fixed top-28 right-1 bg-purple-500 rounded shadow-2xl outline outline-2 outline-white">
               <div className="rounded-t p-2 bg-violet-500 text-white text-xl">New Data</div>
               <div>
@@ -46,7 +61,6 @@ class AddUser extends Component {
                 <div className="mb-2 w-96">
                   <input type="submit"
                     className="w-11/12 m-auto my-2 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" 
-                    onClick={(title, description, date) => this.props.add(this.state.title, this.state.description, this.state.date)} 
                     value="Add" />
                 </div>
               </div>
@@ -56,9 +70,7 @@ class AddUser extends Component {
       )
     }
   }
-
   render() {
-    // console.log(this.state);
     return (
       <div >
         {

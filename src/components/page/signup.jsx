@@ -3,6 +3,7 @@ import "../../tailwind.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 class Register extends React.Component {
+  
   constructor(props){
     super(props);
     this.state = {
