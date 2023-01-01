@@ -32,6 +32,10 @@ class Login extends React.Component {
     this.setState({error:''});
     let olddata = localStorage.getItem('users')
     let oldArr = JSON.parse(olddata)
+    if(oldArr.length === 0) {
+      this.setState({error:"Account doesn't exist"});
+      return
+    }
     oldArr.map(arr => 
       {
         if(this.state.name.length > 0 && this.state.password.length > 0){
