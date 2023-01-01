@@ -3,14 +3,14 @@ import "../../tailwind.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 class Register extends React.Component {
-  
   constructor(props){
     super(props);
     this.state = {
       name:'',
       email:'',
       phone:'',
-      password:''
+      password:'',
+      error:'',
     }
   }
   
@@ -42,11 +42,14 @@ class Register extends React.Component {
       olddata = []
       olddata.push(ob)
       localStorage.setItem('users', JSON.stringify(olddata));
+      this.setState({error:'Registration success'});
     }else{
       let oldArr = JSON.parse(olddata)
       oldArr.push(ob)
       localStorage.setItem("users", JSON.stringify(oldArr))
-    }
+      this.setState({error:'Registration success'});
+    } 
+    e.preventDefault()
   }
 
   render() {
@@ -69,6 +72,9 @@ class Register extends React.Component {
           <label className='text-left block mt-2 text-white'>Password</label>
           <input type="password" className="outline-none w-full py-1 pl-1" value={this.state.password} onChange={this.onChangePassword} required />
         </div>
+        <p className="text-red-600 italic text-left">
+          {this.state.error}
+        </p>
         <div className='mt-1 text-left block'>
           <input type="checkbox"/>
           <label className='text-left mt-2 text-white'>I agree to the terms & conditions</label>
