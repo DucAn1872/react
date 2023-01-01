@@ -40,7 +40,7 @@ class EditUser extends Component {
                                 <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.title} type="text" name="title" className="w-11/12 p-1 my-2 outline-none rounded" placeholder="Enter title..." required/>
                             </div>
                             <div className="mb-2 w-96">
-                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.description} type="text" name="description" className="w-11/12 p-1 mb-2 outline-none rounded" placeholder="Enter description..." required/>
+                                <textarea onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.description} type="text" name="description" className="w-11/12 h-20 p-1 mb-2 outline-none rounded" placeholder="Enter description..." required/>
                             </div>
                             <div className="mb-2 w-96">
                                 <input onChange={(event) => this.isChange(event)} defaultValue={this.props.itemEditObject.date} type="date" name="date" className="w-11/12 p-1 outline-none rounded" required/>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "../../App.css";
 import Search from "../home/Search";
-import TableData from "../home/TableData";
-import AddUser from "../home/AddUser";
+import Task from "../home/Task";
+import Add from "../home/Add";
 import Data from "../home/Data.json";
 import "../../tailwind.css";
 
@@ -101,7 +101,7 @@ class App extends Component {
       <div>
         <div className="w-4/5 m-auto">
                 <div className="m-auto">
-                    <h1 className="font-bold text-4xl mt-10 text-white">Todo List</h1>
+                    <h1 className="font-bold text-4xl mt-7 text-white">Todo List</h1>
                     <p className="text-xl">with data json</p>
                     <hr className="my-2" />
                 </div>
@@ -118,16 +118,17 @@ class App extends Component {
                 editItemStatus={this.state.editItemStatus}
                 changeEditItemStatus={() => this.changeEditItemStatus()}
               />
-              <TableData
+              <Task
                 deleteItem={(idItem) => this.deleteItem(idItem)}
                 changeEditItemStatus={() => this.changeEditItemStatus()}
                 editFun={(item) => this.editItem(item)}
                 dataItemProps={ketqua}
               />
-              <AddUser
+              <Add
                 add={(title, description, date) =>
                   this.getNewUserData(title, description, date)
                 }
+                ketNoi={() => this.doiTrangThai()}
                 hienThiForm={this.state.hienThiForm}
               />
             </div>

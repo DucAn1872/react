@@ -51,7 +51,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} className="mt-32 w-96 m-auto border-2 border-sky-500 rounded p-5 shadow-lg bg-violet-500">
+      <form onSubmit={this.onSubmit} className="mt-32 w-11/12 sm:w-96 m-auto border-2 border-sky-500 rounded p-5 shadow-lg bg-violet-500">
         <h1 className='text-3xl font-bold text-white'>Register</h1>
         <div className="form-group">
           <label className='text-left block mt-2 text-white'>Name</label>

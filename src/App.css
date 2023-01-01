@@ -1,9 +1,13 @@
-#root {
+form {
   background-image: linear-gradient(to bottom right, #6366f1, #ec4899);
 }
+
+body {
+  background: #9063f1;
+}
+
 .App {
   text-align: center;
-  min-height: 800px;
 }
 
 .App-logo {

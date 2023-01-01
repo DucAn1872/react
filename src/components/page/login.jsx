@@ -29,6 +29,7 @@ class Login extends React.Component {
 
   onSubmit = (e) =>{
     e.preventDefault()
+    this.setState({error:''});
     let olddata = localStorage.getItem('users')
     let oldArr = JSON.parse(olddata)
     oldArr.map(arr => 
@@ -50,8 +51,8 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} className="mt-32 w-96 m-auto border-2 border-sky-500 rounded p-5 shadow-lg bg-violet-500">
-        <h1 className='text-4xl font-bold text-yellow-100 text-left'>Login</h1>
+      <form onSubmit={this.onSubmit} className="mt-32 w-11/12 sm:w-96 m-auto border-2 border-sky-500 rounded p-5 shadow-lg bg-violet-500">
+        <h1 className='text-4xl font-bold text-yellow-100'>Login</h1>
         <div>
           <label className='text-left block mt-2 text-white'>Username</label>
           <input type="text" className="outline-none w-full py-1 pl-1" value={this.state.name} onChange={this.onChangeName} required />
