@@ -49,10 +49,10 @@ class AddUser extends Component {
             <div className="z-50 w-11/12 right-0 left-0 m-auto sm:w-96 absolute top-28 bg-purple-500 rounded shadow-2xl outline outline-2 outline-white">
               <div className="flex justify-between rounded-t p-2 bg-violet-500 text-white text-xl">
                 <h1>New Data</h1>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" 
                         className="w-6 h-6 hover:text-red-600"
                         onClick={() => this.props.ketNoi()}>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path stroke-linecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
               </div>
               <div>
