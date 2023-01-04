@@ -8,7 +8,7 @@ import "../../tailwind.css";
 
 const uniqueId = () => parseInt(Date.now() * Math.random()).toString();
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -126,7 +126,7 @@ class App extends Component {
               />
               <Add
                 add={(title, description, date) =>
-                  this.getNewUserData(title, description, date)
+                  {this.getNewUserData(title, description, date)}
                 }
                 ketNoi={() => this.doiTrangThai()}
                 hienThiForm={this.state.hienThiForm}
@@ -139,4 +139,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

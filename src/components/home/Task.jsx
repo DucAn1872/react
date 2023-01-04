@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../tailwind.css";
 
-class TableData extends Component {
+class Task extends Component {
   deleteButtonClick = (idItem) => {
     //deleteItem
     this.props.deleteItem(idItem);
@@ -16,7 +16,7 @@ class TableData extends Component {
     return (
       <div className="m-auto mt-4 w-4/5 md:grid md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-3 mb-4">
         {this.props.dataItemProps.map((value) => (
-          <div className="relative bg-opacity-50 bg-violet-600 border-solid border-2 shadow-2xl border-sky-500 rounded-lg p-2 mb-4 lg:mb-0">
+          <div key={value.id} className="relative bg-opacity-50 bg-violet-600 border-solid border-2 shadow-2xl border-sky-500 rounded-lg p-2 mb-4 lg:mb-0">
             <div className="grid grid-cols-4">
               <div className="text-2xl font-bold truncate text-sky-500 uppercase col-span-2 text-left">
                 {value.title}
@@ -79,4 +79,4 @@ class TableData extends Component {
   }
 }
 
-export default TableData;
+export default Task;

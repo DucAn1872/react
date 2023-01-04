@@ -2,17 +2,50 @@ import React from "react";
 import "./App.css";
 import "./tailwind.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./components/page/home";
-import Login from "./components/page/login";
-import SignUp from "./components/page/signup";
+import Home from "./components/page/Home";
+import Login from "./components/page/Login";
+import SignUp from "./components/page/Register";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const onButtonSignOut = () => {
     window.location.replace(window.location.origin);
   };
+
+  const notify = () => {
+    toast.success("Login success!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   return (
     <Router>
       <div className="App">
+        {notify()}
+        <div>
+          <ToastContainer
+            position="top-right"
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+          {/* Same as */}
+          <ToastContainer />
+        </div>
         <nav className="bg-violet-700 flex justify-between p-3">
           <div className="text-red-600 font-bold text-2xl text-left">
             Slowdown2k
