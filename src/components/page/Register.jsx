@@ -11,6 +11,7 @@ class Register extends React.Component {
       email:'',
       phone:'',
       password:'',
+      passwordConfirm:'',
       error:'',
       status:'',
     }
@@ -32,6 +33,10 @@ class Register extends React.Component {
     this.setState({password:e.target.value})
   }
 
+  onChangePasswordConfirm = (e) =>{
+    this.setState({passwordConfirm:e.target.value})
+  }
+
   onSubmit = (e) =>{
     let ob = {
       name: this.state.name,
@@ -40,7 +45,11 @@ class Register extends React.Component {
       password: this.state.password,
     }
     let olddata = localStorage.getItem('users');
-    if(olddata===null){
+    if(this.state.passwordConfirm !== this.state.password) {
+      this.setState({
+        error: 'Passwords do not match',
+      });
+    }else if(olddata===null){
       olddata = []
       olddata.push(ob)
       localStorage.setItem('users', JSON.stringify(olddata));
@@ -81,6 +90,10 @@ class Register extends React.Component {
         <div className="form-group">
           <label className='text-left block mt-2 text-white'>Password</label>
           <input type="password" className="outline-none w-full py-1 pl-1" value={this.state.password} onChange={this.onChangePassword} required />
+        </div>
+        <div className="form-group">
+          <label className='text-left block mt-2 text-white'>Re-enter Password</label>
+          <input type="password" className="outline-none w-full py-1 pl-1" value={this.state.passwordConfirm} onChange={this.onChangePasswordConfirm} required />
         </div>
         <div className='flex mt-1'>
           {this.state.status && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" 
