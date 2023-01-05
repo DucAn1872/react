@@ -65,7 +65,7 @@ class Login extends React.Component {
           <label className='text-left block mt-2 text-white'>Password</label>
           <input type="password" className="outline-none w-full py-1 pl-1" value={this.state.password} onChange={this.onChangePassword} required />
         </div>
-        <p className="text-red-600 italic text-left">
+        <p className="text-yellow-300 italic text-left">
           {this.state.error}
         </p>
         <div className='mt-1 text-left block'>

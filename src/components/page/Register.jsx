@@ -1,6 +1,7 @@
 import React from 'react';
 import "../../tailwind.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState } from 'react';
 
 class Register extends React.Component {
   constructor(props){
@@ -11,6 +12,7 @@ class Register extends React.Component {
       phone:'',
       password:'',
       error:'',
+      status:'',
     }
   }
   
@@ -43,11 +45,19 @@ class Register extends React.Component {
       olddata.push(ob)
       localStorage.setItem('users', JSON.stringify(olddata));
       this.setState({error:'Registration success'});
+      this.setState({status:"success"});
+      setTimeout(() => {
+        window.location.replace(window.location.origin + "/sign-in");
+      }, 3000)
     }else{
       let oldArr = JSON.parse(olddata)
       oldArr.push(ob)
       localStorage.setItem("users", JSON.stringify(oldArr))
       this.setState({error:'Registration success'});
+      this.setState({status:"success"});
+      setTimeout(() => {
+        window.location.replace(window.location.origin + "/sign-in");
+      }, 3000)
     } 
     e.preventDefault()
   }
@@ -72,9 +82,16 @@ class Register extends React.Component {
           <label className='text-left block mt-2 text-white'>Password</label>
           <input type="password" className="outline-none w-full py-1 pl-1" value={this.state.password} onChange={this.onChangePassword} required />
         </div>
-        <p className="text-red-600 italic text-left">
-          {this.state.error}
-        </p>
+        <div className='flex mt-1'>
+          {this.state.status && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" 
+            className="w-6 h-6 text-green-500">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          }
+          <p className={this.state.status ? "text-green-500 italic text-left" : "text-yellow-300 italic text-left"}>
+            {this.state.error}
+          </p>
+        </div>
         <div className='mt-1 text-left block'>
           <input type="checkbox"/>
           <label className='text-left mt-2 text-white'>I agree to the terms & conditions</label>
